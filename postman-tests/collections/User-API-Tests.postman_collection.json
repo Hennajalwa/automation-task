@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "a38801ee-0681-468d-8f57-d6180d5ffefa",
+		"name": "CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47041846",
+		"_collection_link": "https://satellite-explorer-52583030-1467781.postman.co/workspace/Henna-Jalwa's-Workspace~6f82e95e-2159-49db-8eca-343afb70d8cc/collection/47041846-a38801ee-0681-468d-8f57-d6180d5ffefa?action=share&source=collection_link&creator=47041846"
+	},
+	"item": [
+		{
+			"name": "https://user-login-mern-app.onrender.com/user/signup",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Account creation message is correct\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.include(\"Account Create Successful\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"KingKong\",\r\n    \"email\": \"kingkong@gmail.com\",\r\n    \"password\": \"Password@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://user-login-mern-app.onrender.com/user/signup",
+					"protocol": "https",
+					"host": [
+						"user-login-mern-app",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://user-login-mern-app.onrender.com/user/signin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 501\", function () {\r",
+							"    pm.response.to.have.status(501);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"if (jsonData.token) {\r",
+							"    pm.environment.set(\"token\", jsonData.token);\r",
+							"    console.log(\"Token saved:\", jsonData.token);\r",
+							"} else {\r",
+							"    console.log(\"Token not found in response.\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"kingkong@gmail.com\",\r\n    \"password\": \"WrongPassword@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://user-login-mern-app.onrender.com/user/signin",
+					"protocol": "https",
+					"host": [
+						"user-login-mern-app",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://user-login-mern-app.onrender.com/user/signin Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"if (jsonData.token) {\r",
+							"    pm.environment.set(\"token\", jsonData.token);\r",
+							"    console.log(\"Token saved:\", jsonData.token);\r",
+							"} else {\r",
+							"    console.log(\"Token not found in response.\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"kingkong@gmail.com\",\r\n    \"password\": \"Password@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://user-login-mern-app.onrender.com/user/signin",
+					"protocol": "https",
+					"host": [
+						"user-login-mern-app",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://user-login-mern-app.onrender.com/userInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"User details are returned\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result).to.have.property(\"email\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://user-login-mern-app.onrender.com/userInfo",
+					"protocol": "https",
+					"host": [
+						"user-login-mern-app",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"userInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://user-login-mern-app.onrender.com/userInfo/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains updated user details\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData.result).to.have.property(\"name\", \"KingKong\");\r",
+							"    pm.expect(jsonData.result).to.have.property(\"email\", \"kingkong@gmail.com\");\r",
+							"    pm.expect(jsonData.result).to.have.property(\"role\", \"user\");\r",
+							"    pm.expect(jsonData.result).to.have.property(\"phone\", \"1234567890\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"KingKong\",\r\n    \"email\": \"kingkong@gmail.com\",\r\n    \"password\": \"$2b$10$JIYGGjkPaoWKqEXopcLC4.cJfihFCFxLdRXCPPSHwZ.A4YD8rk1w.\",\r\n    \"role\": \"user\",\r\n    \"phone\": \"1234567890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://user-login-mern-app.onrender.com/userInfo/",
+					"protocol": "https",
+					"host": [
+						"user-login-mern-app",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"userInfo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://user-login-mern-app.onrender.com/userInfo/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://user-login-mern-app.onrender.com/userInfo/",
+					"protocol": "https",
+					"host": [
+						"user-login-mern-app",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"userInfo",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
