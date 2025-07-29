@@ -44,7 +44,7 @@ automation-task/
 ├── postman-tests/                     # API Automation
 │   ├── collections/                   # Postman test collections
 │   └── environments/                  # Environment configurations
-└── screen-recordings/                       # Test evidence
+└── screenshots/                       # Test evidence
 ```
 
 ## 🎯 Test Coverage
